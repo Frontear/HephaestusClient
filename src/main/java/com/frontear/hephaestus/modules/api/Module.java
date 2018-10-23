@@ -1,24 +1,46 @@
 package com.frontear.hephaestus.modules.api;
 
 import com.frontear.hephaestus.Hephaestus;
+import com.frontear.hephaestus.managers.CommandManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 
-public class Module {
+public class Module extends CommandManager {
     private String name;
     public KeyBinding module;
     private boolean state;
+    private CommandManager command;
 
     private float scaleFactor = 1.2f;
     protected Minecraft minecraft = Minecraft.getMinecraft();
 
     public Module(String name, int keyCode) {
-        this.name = name + " " + "[" + Keyboard.getKeyName(keyCode) + "]";
+        super(name.toLowerCase(), "Usage: " + name.toLowerCase() + " <command>", "toggle", "state");
+
         module = new KeyBinding(name, keyCode, "");
 
+        this.name = name + " " + "[" + Keyboard.getKeyName(module.getKeyCode()) + "]";
+    }
+
+    @Override
+    public boolean doCommand(ICommandSender sender, String[] args) {
+        boolean hasArgs = super.doCommand(sender, args);
+
+        if (hasArgs) {
+            if (args[0].equalsIgnoreCase("toggle")) {
+                Toggle();
+            }
+            else if (args[0].equalsIgnoreCase("state")) {
+                sender.addChatMessage(formatText(EnumChatFormatting.GRAY, name + " is currently " + state));
+            }
+        }
+
+        return true;
     }
 
     public void onGui(int offset) {
