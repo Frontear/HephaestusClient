@@ -3,11 +3,12 @@ package com.frontear.hephaestus.modules.api;
 import com.frontear.hephaestus.Hephaestus;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 
 public class Module {
-    public String name;
+    private String name;
     public KeyBinding module;
     private boolean state;
 
@@ -15,7 +16,7 @@ public class Module {
     protected Minecraft minecraft = Minecraft.getMinecraft();
 
     public Module(String name, int keyCode) {
-        this.name = name;
+        this.name = name + " " + "[" + Keyboard.getKeyName(keyCode) + "]";
         module = new KeyBinding(name, keyCode, "");
 
     }
