@@ -13,9 +13,7 @@ public class Sprint extends Module {
         super.onUpdate();
 
         if (minecraft.thePlayer.moveForward > 0) {
-            if (!minecraft.thePlayer.isSprinting()) {
-                minecraft.thePlayer.setSprinting(true);
-            }
+            minecraft.thePlayer.setSprinting(true);
         }
     }
 }
