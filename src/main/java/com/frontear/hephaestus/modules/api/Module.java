@@ -14,7 +14,6 @@ public class Module extends CommandManager {
     private String name;
     public KeyBinding module;
     private boolean state;
-    private CommandManager command;
 
     private float scaleFactor = 1.2f;
     protected Minecraft minecraft = Minecraft.getMinecraft();
