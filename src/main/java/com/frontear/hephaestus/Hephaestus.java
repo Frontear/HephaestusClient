@@ -1,12 +1,14 @@
 package com.frontear.hephaestus;
 
 import com.frontear.hephaestus.client.HephaestusClient;
+import com.frontear.hephaestus.commands.TestCommand;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import org.lwjgl.opengl.Display;
 
 @Mod(
         modid = "hephaestus",
@@ -21,5 +23,6 @@ public class Hephaestus
     public void postInit(FMLPostInitializationEvent event)
     {
         MinecraftForge.EVENT_BUS.register(client = new HephaestusClient());
+        ClientCommandHandler.instance.registerCommand(new TestCommand("testcommand", "Usage: /testcommand <value>"));
     }
 }

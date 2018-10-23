@@ -1,6 +1,7 @@
 package com.frontear.hephaestus.client;
 
 import com.frontear.hephaestus.managers.*;
+import com.frontear.hephaestus.modules.AutoClicker;
 import com.frontear.hephaestus.modules.api.Module;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
