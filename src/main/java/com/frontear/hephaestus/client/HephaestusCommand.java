@@ -15,7 +15,6 @@ import java.lang.reflect.Field;
 public class HephaestusCommand extends CommandManager {
     private String hephaestusPrefix;
     private String hephaestusInformation;
-    private String hephaestusHelp;
 
     private EnumChatFormatting mainColor;
     private EnumChatFormatting secondaryColor;
@@ -30,11 +29,6 @@ public class HephaestusCommand extends CommandManager {
 
         hephaestusPrefix = new ChatComponentText(tertiaryColor + "[" + mainColor + Hephaestus.client.CLIENT_NAME + tertiaryColor + "]" + " " + secondaryColor).getChatComponentText_TextValue();
         hephaestusInformation = new ChatComponentText("Use " + mainColor + "/hephaestus help" + secondaryColor + " for more information.").getChatComponentText_TextValue();
-
-        hephaestusHelp = "";
-        for (CommandArgs theArgs : commandArgs) {
-            hephaestusHelp += System.getProperty("line.separator") + new ChatComponentText(tertiaryColor + "- " + secondaryColor + theArgs.argument + " " + theArgs.description).getChatComponentText_TextValue();
-        }
     }
 
     @Override
@@ -46,19 +40,13 @@ public class HephaestusCommand extends CommandManager {
     public void doCommand(ICommandSender sender, String[] args) {
         if (args.length != 0) {
             if (args[0].equalsIgnoreCase("help")) {
-                hephaestusResponse(sender, "Commands include: " + hephaestusHelp);
+                getHelp(sender);
             }
             else if (args[0].equalsIgnoreCase("version")) {
                 hephaestusResponse(sender, "You are using version " + Hephaestus.client.CLIENT_VERSION);
             }
             else if (args[0].equalsIgnoreCase("bind")) {
-                try {
-                    getBinds(sender, args);
-                } catch (NoSuchFieldException e) {
-                    hephaestusResponse(sender, "No such key found. Please try again");
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
+                getBinds(sender, args);
             }
             else {
                 getCommandUsage(sender);
@@ -69,15 +57,33 @@ public class HephaestusCommand extends CommandManager {
         }
     }
 
-    private void getBinds(ICommandSender sender, String[] args) throws NoSuchFieldException, IllegalAccessException {
+    private void getHelp(ICommandSender sender) {
+        String hephaestusHelp = "";
+        for (CommandArgs theArgs : commandArgs) {
+            hephaestusHelp += System.getProperty("line.separator") + new ChatComponentText(tertiaryColor + "- " + secondaryColor + theArgs.argument + " " + theArgs.description).getChatComponentText_TextValue();
+        }
+
+        hephaestusResponse(sender, "Commands include: " + hephaestusHelp);
+    }
+
+    private void getBinds(ICommandSender sender, String[] args) {
         if (args[1] != null) {
             for (Module module : Hephaestus.client.moduleManager.moduleList) {
                 if (args[1].equalsIgnoreCase(module.name)) {
                     if (args[2] != null) {
                         Class<Keyboard> keys = Keyboard.class;
-                        Field key = keys.getDeclaredField("KEY_" + args[2].toUpperCase());
+                        Field key = null;
+                        try {
+                            key = keys.getDeclaredField("KEY_" + args[2].toUpperCase());
+                        } catch (NoSuchFieldException e) {
+                            hephaestusResponse(sender, "No such key found! Please try again.");
+                        }
 
-                        module.module = new KeyBinding(module.name, key.getInt(null), ""); // I don't like this method at all.
+                        try {
+                            module.module = new KeyBinding(module.name, key.getInt(null), ""); // I don't like this method at all.
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
                         hephaestusResponse(sender, module.name + " keybind changed to " + Keyboard.getKeyName(module.module.getKeyCode()));
                     }
                 }

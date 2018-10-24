@@ -3,7 +3,7 @@
   "modid": "hephaestus",
   "name": "Hephaestus Client",
   "description": "A special modded client that gives small benefits to the user experience",
-  "version": "1.0",
+  "version": "0.2",
   "mcversion": "1.8.9",
   "url": "https://github.com/Frontear/HephaestusClient",
   "updateUrl": "",
