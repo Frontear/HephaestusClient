@@ -3,6 +3,7 @@ package com.frontear.hephaestus.client;
 import com.frontear.hephaestus.Hephaestus;
 import com.frontear.hephaestus.managers.CommandManager;
 import com.frontear.hephaestus.modules.api.Module;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
@@ -75,10 +76,8 @@ public class HephaestusCommand extends CommandManager {
                         Class<Keyboard> keys = Keyboard.class;
                         Field key = keys.getDeclaredField("KEY_" + args[2].toUpperCase());
 
-                        if (module.module.getKeyCode() != key.getInt(null)) {
-                            module.module.setKeyCode(key.getInt(null)); //todo: figure out why this change doesn't actually work when calling the module.
-                            hephaestusResponse(sender, module.name + " keybind changed to " + Keyboard.getKeyName(key.getInt(null)));
-                        }
+                        module.module = new KeyBinding(module.name, key.getInt(null), ""); // I don't like this method at all.
+                        hephaestusResponse(sender, module.name + " keybind changed to " + Keyboard.getKeyName(module.module.getKeyCode()));
                     }
                 }
             }
