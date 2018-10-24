@@ -26,10 +26,12 @@ public class HephaestusClient {
     }
 
     @SubscribeEvent
-    public void onGui(RenderGameOverlayEvent event) {
-        uiManager.Draw();
-        for (int i = 0; i < moduleManager.getEnabledModules().size(); i++) {
-            moduleManager.getEnabledModules().get(i).onGui(i);
+    public void onGui(RenderGameOverlayEvent.Post event) {
+        if (event.type == RenderGameOverlayEvent.ElementType.TEXT) {
+            uiManager.Draw();
+            for (int i = 0; i < moduleManager.getEnabledModules().size(); i++) {
+                moduleManager.getEnabledModules().get(i).onGui(i);
+            }
         }
     }
 
