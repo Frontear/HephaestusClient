@@ -3,6 +3,7 @@ package com.frontear.hephaestus.modules.api;
 import com.frontear.hephaestus.Hephaestus;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -18,6 +19,7 @@ public class Module {
 
     public Module(String name, int keyCode) {
         module = new KeyBinding(name, keyCode, "");
+        ClientRegistry.registerKeyBinding(module);
 
         this.name = name;
         name_with_keyCode = name + " " + "[" + Keyboard.getKeyName(module.getKeyCode()) + "]";
