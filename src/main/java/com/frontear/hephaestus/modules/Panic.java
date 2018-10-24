@@ -6,7 +6,7 @@ import org.lwjgl.input.Keyboard;
 
 public class Panic extends Module {
     public Panic() {
-        super("Name", Keyboard.KEY_P);
+        super("Panic", Keyboard.KEY_P);
     }
 
     @Override

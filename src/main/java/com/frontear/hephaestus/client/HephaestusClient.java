@@ -1,6 +1,7 @@
 package com.frontear.hephaestus.client;
 
 import com.frontear.hephaestus.managers.*;
+import com.frontear.hephaestus.modules.AutoClicker;
 import com.frontear.hephaestus.modules.api.Module;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -11,8 +12,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.Display;
 
 public class HephaestusClient {
-    public final String CLIENT_NAME = "Hephaestus Client";
-    public final double CLIENT_VERSION = 0.1;
+    public final String CLIENT_NAME = "Hephaestus";
+    public final double CLIENT_VERSION = 0.2;
 
     public UIManager uiManager;
     public ModuleManager moduleManager;
@@ -21,7 +22,7 @@ public class HephaestusClient {
         uiManager = new UIManager();
         moduleManager = new ModuleManager();
 
-        Display.setTitle(CLIENT_NAME + " " + CLIENT_VERSION);
+        Display.setTitle(CLIENT_NAME + " " + "Client" + " " + CLIENT_VERSION);
     }
 
     @SubscribeEvent

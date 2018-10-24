@@ -8,7 +8,8 @@ import org.lwjgl.input.Keyboard;
 import java.awt.*;
 
 public class Module {
-    private String name;
+    public String name;
+    private String name_with_keyCode;
     public KeyBinding module;
     private boolean state;
 
@@ -16,15 +17,16 @@ public class Module {
     protected Minecraft minecraft = Minecraft.getMinecraft();
 
     public Module(String name, int keyCode) {
-        this.name = name + " " + "[" + Keyboard.getKeyName(keyCode) + "]";
         module = new KeyBinding(name, keyCode, "");
 
+        this.name = name;
+        name_with_keyCode = name + " " + "[" + Keyboard.getKeyName(module.getKeyCode()) + "]";
     }
 
     public void onGui(int offset) {
-        Hephaestus.client.uiManager.uiPosition.positionText(Hephaestus.client.uiManager.position_on_screen, name, 2, 8, 1.2f);
+        Hephaestus.client.uiManager.uiPosition.positionText(Hephaestus.client.uiManager.position_on_screen, name_with_keyCode, 2, 8, 1.2f);
         Hephaestus.client.uiManager.uiPosition.GLScale(scaleFactor);
-        minecraft.fontRendererObj.drawStringWithShadow(name, Hephaestus.client.uiManager.uiPosition.x_position, (Hephaestus.client.uiManager.uiPosition.y_position - 10) - (offset * 10), new Color(255, 255, 255).getRGB());
+        minecraft.fontRendererObj.drawStringWithShadow(name_with_keyCode, Hephaestus.client.uiManager.uiPosition.x_position, (Hephaestus.client.uiManager.uiPosition.y_position - 10) - (offset * 10), new Color(255, 255, 255).getRGB());
         Hephaestus.client.uiManager.uiPosition.GLScale( 1 / scaleFactor);
     }
 
