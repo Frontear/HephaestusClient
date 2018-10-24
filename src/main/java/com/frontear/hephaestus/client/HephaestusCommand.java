@@ -1,6 +1,7 @@
 package com.frontear.hephaestus.client;
 
 import com.frontear.hephaestus.Hephaestus;
+import com.frontear.hephaestus.helpers.CommandArgs;
 import com.frontear.hephaestus.managers.CommandManager;
 import com.frontear.hephaestus.modules.api.Module;
 import net.minecraft.client.settings.KeyBinding;
@@ -20,7 +21,7 @@ public class HephaestusCommand extends CommandManager {
     private EnumChatFormatting secondaryColor;
     private EnumChatFormatting tertiaryColor;
 
-    public HephaestusCommand(String commandName, String commandUsage, String... commandArgs) {
+    public HephaestusCommand(String commandName, String commandUsage, CommandArgs... commandArgs) {
         super(commandName, commandUsage, commandArgs);
 
         mainColor = EnumChatFormatting.GOLD;
@@ -31,8 +32,8 @@ public class HephaestusCommand extends CommandManager {
         hephaestusInformation = new ChatComponentText("Use " + mainColor + "/hephaestus help" + secondaryColor + " for more information.").getChatComponentText_TextValue();
 
         hephaestusHelp = "";
-        for (String theArgs : commandArgs) {
-            hephaestusHelp += System.getProperty("line.separator") + new ChatComponentText(tertiaryColor + "- " + secondaryColor + theArgs).getChatComponentText_TextValue();
+        for (CommandArgs theArgs : commandArgs) {
+            hephaestusHelp += System.getProperty("line.separator") + new ChatComponentText(tertiaryColor + "- " + secondaryColor + theArgs.argument + " " + theArgs.description).getChatComponentText_TextValue();
         }
     }
 

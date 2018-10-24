@@ -1,11 +1,8 @@
 package com.frontear.hephaestus.modules.api;
 
 import com.frontear.hephaestus.Hephaestus;
-import com.frontear.hephaestus.managers.CommandManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;

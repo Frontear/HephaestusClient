@@ -1,7 +1,7 @@
 package com.frontear.hephaestus.managers;
 
+import com.frontear.hephaestus.helpers.CommandArgs;
 import net.minecraft.command.CommandBase;
-import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
@@ -14,9 +14,9 @@ import java.util.List;
 public class CommandManager extends CommandBase {
     public String commandName;
     public String commandUsage;
-    public String[] commandArgs;
+    public CommandArgs[] commandArgs;
 
-    public CommandManager(String commandName, String commandUsage, String... commandArgs) {
+    public CommandManager(String commandName, String commandUsage, CommandArgs... commandArgs) {
         this.commandName = commandName;
         this.commandUsage = commandUsage;
         this.commandArgs = commandArgs;
@@ -40,7 +40,7 @@ public class CommandManager extends CommandBase {
     }
 
     @Override
-    public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+    public void processCommand(ICommandSender sender, String[] args) {
         doCommand(sender, args);
     }
 
@@ -54,11 +54,11 @@ public class CommandManager extends CommandBase {
         return (new ChatComponentText(color + message));
     }
 
-    public List<String> autoCompletionArgs(String... args) {
+    public List<String> autoCompletionArgs(CommandArgs... args) {
         ArrayList<String> arguments = new ArrayList<String>();
 
-        for (String s : args) {
-            arguments.add(s);
+        for (CommandArgs commandArgs : args) {
+            arguments.add(commandArgs.argument);
         }
 
         return arguments;
