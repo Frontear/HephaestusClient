@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommandManager extends CommandBase {
-    private String commandName;
-    private String commandUsage;
-    private String[] commandArgs;
+    public String commandName;
+    public String commandUsage;
+    public String[] commandArgs;
 
     public CommandManager(String commandName, String commandUsage, String... commandArgs) {
         this.commandName = commandName;
@@ -30,11 +30,6 @@ public class CommandManager extends CommandBase {
     }
 
     @Override
-    public String getCommandUsage(ICommandSender sender) {
-        return formatText(EnumChatFormatting.RED, commandUsage).getChatComponentText_TextValue();
-    }
-
-    @Override
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
         return autoCompletionArgs(commandArgs);
     }
@@ -44,21 +39,19 @@ public class CommandManager extends CommandBase {
         return true;
     }
 
-    public ChatComponentText formatText(EnumChatFormatting color, String message) {
-        return (new ChatComponentText(color + message));
-    }
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         doCommand(sender, args);
     }
 
-    public boolean doCommand(ICommandSender sender, String[] args) {
-        boolean hasArgs = (commandArgs.length != 0 && args.length != 0);
-        if (!hasArgs) {
-            sender.addChatMessage(new ChatComponentText(getCommandUsage(sender)));
-        }
+    public String getCommandUsage(ICommandSender sender) {
+        return formatText(EnumChatFormatting.RED, commandUsage).getChatComponentText_TextValue();
+    }
 
-        return hasArgs;
+    public void doCommand(ICommandSender sender, String[] args) {}
+
+    public ChatComponentText formatText(EnumChatFormatting color, String message) {
+        return (new ChatComponentText(color + message));
     }
 
     public List<String> autoCompletionArgs(String... args) {

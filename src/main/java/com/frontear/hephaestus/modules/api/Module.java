@@ -10,8 +10,9 @@ import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 
-public class Module extends CommandManager {
-    private String name;
+public class Module {
+    public String name;
+    private String name_with_keyCode;
     public KeyBinding module;
     private boolean state;
 
@@ -19,33 +20,16 @@ public class Module extends CommandManager {
     protected Minecraft minecraft = Minecraft.getMinecraft();
 
     public Module(String name, int keyCode) {
-        super(name.toLowerCase(), "Usage: " + name.toLowerCase() + " <command>", "toggle", "state");
-
         module = new KeyBinding(name, keyCode, "");
 
-        this.name = name + " " + "[" + Keyboard.getKeyName(module.getKeyCode()) + "]";
-    }
-
-    @Override
-    public boolean doCommand(ICommandSender sender, String[] args) {
-        boolean hasArgs = super.doCommand(sender, args);
-
-        if (hasArgs) {
-            if (args[0].equalsIgnoreCase("toggle")) {
-                Toggle();
-            }
-            else if (args[0].equalsIgnoreCase("state")) {
-                sender.addChatMessage(formatText(EnumChatFormatting.GRAY, name + " is currently " + state));
-            }
-        }
-
-        return true;
+        this.name = name;
+        name_with_keyCode = name + " " + "[" + Keyboard.getKeyName(module.getKeyCode()) + "]";
     }
 
     public void onGui(int offset) {
-        Hephaestus.client.uiManager.uiPosition.positionText(Hephaestus.client.uiManager.position_on_screen, name, 2, 8, 1.2f);
+        Hephaestus.client.uiManager.uiPosition.positionText(Hephaestus.client.uiManager.position_on_screen, name_with_keyCode, 2, 8, 1.2f);
         Hephaestus.client.uiManager.uiPosition.GLScale(scaleFactor);
-        minecraft.fontRendererObj.drawStringWithShadow(name, Hephaestus.client.uiManager.uiPosition.x_position, (Hephaestus.client.uiManager.uiPosition.y_position - 10) - (offset * 10), new Color(255, 255, 255).getRGB());
+        minecraft.fontRendererObj.drawStringWithShadow(name_with_keyCode, Hephaestus.client.uiManager.uiPosition.x_position, (Hephaestus.client.uiManager.uiPosition.y_position - 10) - (offset * 10), new Color(255, 255, 255).getRGB());
         Hephaestus.client.uiManager.uiPosition.GLScale( 1 / scaleFactor);
     }
 
