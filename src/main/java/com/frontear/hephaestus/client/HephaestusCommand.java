@@ -10,6 +10,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
 
+import javax.swing.text.JTextComponent;
 import java.lang.reflect.Field;
 
 public class HephaestusCommand extends CommandManager {
@@ -80,7 +81,8 @@ public class HephaestusCommand extends CommandManager {
                         }
 
                         try {
-                            module.module = new KeyBinding(module.name, key.getInt(null), ""); // I don't like this method at all.
+                            module.module.setKeyCode(key.getInt(null));
+                            KeyBinding.resetKeyBindingArrayAndHash();
                         } catch (IllegalAccessException e) {
                             e.printStackTrace();
                         }

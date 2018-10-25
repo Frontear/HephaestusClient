@@ -13,7 +13,7 @@ import org.lwjgl.opengl.Display;
 
 public class HephaestusClient {
     public final String CLIENT_NAME = "Hephaestus";
-    public final double CLIENT_VERSION = 0.2;
+    public final double CLIENT_VERSION = 0.3;
 
     public UIManager uiManager;
     public ModuleManager moduleManager;
@@ -37,8 +37,10 @@ public class HephaestusClient {
 
     @SubscribeEvent
     public void onUpdate(TickEvent.PlayerTickEvent event) {
-        for (Module module : moduleManager.getEnabledModules()) {
-            module.onUpdate();
+        if (event.type == TickEvent.Type.PLAYER) {
+            for (Module module : moduleManager.getEnabledModules()) {
+                module.onUpdate();
+            }
         }
     }
 

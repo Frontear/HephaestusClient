@@ -1,6 +1,8 @@
 package com.frontear.hephaestus.modules;
 
 import com.frontear.hephaestus.modules.api.Module;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import org.lwjgl.input.Keyboard;
 
 public class Fullbright extends Module {
@@ -12,6 +14,11 @@ public class Fullbright extends Module {
     public void onToggle(boolean state) {
         super.onToggle(state);
 
-        minecraft.gameSettings.gammaSetting = (state ? 100f : 0.5f);
+        if (state) {
+            minecraft.thePlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, Integer.MAX_VALUE, 1));
+        }
+        else {
+            minecraft.thePlayer.removePotionEffect(Potion.nightVision.id);
+        }
     }
 }
