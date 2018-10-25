@@ -12,7 +12,7 @@ public class Sprint extends Module {
     public void onUpdate() {
         super.onUpdate();
 
-        if (minecraft.thePlayer.moveForward > 0) {
+        if (minecraft.thePlayer.moveForward > 0 && !minecraft.thePlayer.isSneaking()) {
             minecraft.thePlayer.setSprinting(true);
         }
     }

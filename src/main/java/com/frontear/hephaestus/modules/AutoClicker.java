@@ -4,7 +4,6 @@ import com.frontear.hephaestus.helpers.DelayTimer;
 import com.frontear.hephaestus.modules.api.Module;
 import org.lwjgl.input.Keyboard;
 
-import java.util.Date;
 import java.util.Random;
 
 public class AutoClicker extends Module {
@@ -28,8 +27,8 @@ public class AutoClicker extends Module {
         if (minecraft.gameSettings.keyBindAttack.isKeyDown()) {
             int _a = 1000 / (random.nextInt(max_cps - min_cps) + min_cps);
             if (delayTimer.hasTimeElapsed(_a, true)) {
-                minecraft.thePlayer.swingItem();
-                switch (minecraft.objectMouseOver.typeOfHit) {
+            	minecraft.thePlayer.swingItem();
+            	switch (minecraft.objectMouseOver.typeOfHit) {
                     case ENTITY:
                         minecraft.playerController.attackEntity(minecraft.thePlayer, minecraft.objectMouseOver.entityHit);
                         break;
