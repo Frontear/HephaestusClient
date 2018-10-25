@@ -10,8 +10,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
 
 public class NoFOV extends Module {
-    private float fov = 0.0F;
-
     public NoFOV() {
         super("NoFOV", Keyboard.KEY_C);
         MinecraftForge.EVENT_BUS.register(this);
@@ -20,29 +18,16 @@ public class NoFOV extends Module {
     @SubscribeEvent
     public void onFOVUpdate(FOVUpdateEvent event) {
         if(getState()) {
-            if(event.entity.isPotionActive(Potion.moveSpeed) && event.entity.isSprinting()) {
-                event.newfov = 1.15F;
+            if (fovModificationPotionEffects(event) && event.entity.isSprinting()) {
+                event.newfov = 1.15f;
             }
-
-            if(this.fov > 0.0F) {
-                event.newfov = 1.0F;
-                this.fov = 0.0F;
+            else if (fovModificationPotionEffects(event) && !event.entity.isSprinting()) {
+                event.newfov = 1f;
             }
         }
-
     }
 
-    @SubscribeEvent
-    public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
-        if(getState()) {
-            if(event.entity instanceof EntityPlayer && event.entityLiving.isPotionActive(Potion.moveSpeed) && !event.entity.isSprinting()) {
-                this.fov = 1.0F;
-            }
-
-            if(event.entity instanceof EntityPlayer && event.entityLiving.isPotionActive(Potion.moveSlowdown)) {
-                this.fov = 1.0F;
-            }
-        }
-
+    private boolean fovModificationPotionEffects(FOVUpdateEvent event) {
+        return (event.entity.isPotionActive(Potion.moveSpeed) || event.entity.isPotionActive(Potion.moveSlowdown));
     }
 }
