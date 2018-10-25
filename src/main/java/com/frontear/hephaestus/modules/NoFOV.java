@@ -14,20 +14,11 @@ public class NoFOV extends Module {
 
     public NoFOV() {
         super("NoFOV", Keyboard.KEY_C);
-    }
-
-    @Override
-    public void onToggle(boolean state) {
-        if (state) {
-            MinecraftForge.EVENT_BUS.register(this);
-        }
-        else {
-            MinecraftForge.EVENT_BUS.unregister(this);
-        }
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @SubscribeEvent
-    public void FOVUpdateEvent(FOVUpdateEvent event) {
+    public void onFOVUpdate(FOVUpdateEvent event) {
         if(getState()) {
             if(event.entity.isPotionActive(Potion.moveSpeed) && event.entity.isSprinting()) {
                 event.newfov = 1.15F;
@@ -42,7 +33,7 @@ public class NoFOV extends Module {
     }
 
     @SubscribeEvent
-    public void LivingUpdateEvent(LivingEvent.LivingUpdateEvent event) {
+    public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
         if(getState()) {
             if(event.entity instanceof EntityPlayer && event.entityLiving.isPotionActive(Potion.moveSpeed) && !event.entity.isSprinting()) {
                 this.fov = 1.0F;
