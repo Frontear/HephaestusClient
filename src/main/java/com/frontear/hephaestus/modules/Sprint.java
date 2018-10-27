@@ -12,8 +12,12 @@ public class Sprint extends Module {
     public void onUpdate() {
         super.onUpdate();
 
-        if (minecraft.thePlayer.moveForward > 0 && !minecraft.thePlayer.isSneaking()) {
+        if (canSprint()) {
             minecraft.thePlayer.setSprinting(true);
         }
+    }
+
+    private boolean canSprint() {
+        return (!minecraft.thePlayer.isBlocking() && !minecraft.thePlayer.isOnLadder() && !minecraft.thePlayer.isCollidedHorizontally && minecraft.thePlayer.getFoodStats().getFoodLevel() > 6);
     }
 }

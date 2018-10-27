@@ -16,18 +16,14 @@ public class NoFOV extends Module {
     }
 
     @SubscribeEvent
-    public void onFOVUpdate(FOVUpdateEvent event) {
+    public void onFOV(FOVUpdateEvent event) {
         if(getState()) {
-            if (fovModificationPotionEffects(event) && event.entity.isSprinting()) {
+            if (event.entity.isSprinting()) {
                 event.newfov = 1.15f;
             }
-            else if (fovModificationPotionEffects(event) && !event.entity.isSprinting()) {
+            else if (!event.entity.isSprinting()) {
                 event.newfov = 1f;
             }
         }
-    }
-
-    private boolean fovModificationPotionEffects(FOVUpdateEvent event) {
-        return (event.entity.isPotionActive(Potion.moveSpeed) || event.entity.isPotionActive(Potion.moveSlowdown));
     }
 }

@@ -1,5 +1,6 @@
 package com.frontear.hephaestus.client;
 
+import com.frontear.hephaestus.Hephaestus;
 import com.frontear.hephaestus.managers.*;
 import com.frontear.hephaestus.modules.AutoClicker;
 import com.frontear.hephaestus.modules.api.Module;
@@ -26,7 +27,7 @@ public class HephaestusClient {
     }
 
     @SubscribeEvent
-    public void onGui(RenderGameOverlayEvent.Post event) {
+    public void onGui(RenderGameOverlayEvent event) {
         if (event.type == RenderGameOverlayEvent.ElementType.TEXT) {
             uiManager.Draw();
             for (int i = 0; i < moduleManager.getEnabledModules().size(); i++) {
