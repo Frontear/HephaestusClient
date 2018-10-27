@@ -39,7 +39,7 @@ public class GUIManager extends GuiScreen {
     }
 
     @Override
-    protected void actionPerformed(GuiButton button) throws IOException {
+    protected void actionPerformed(GuiButton button) {
         for (int i = 0; i < Hephaestus.client.moduleManager.moduleList.size(); i++) {
             if (button.id == i) {
                 Hephaestus.client.moduleManager.moduleList.get(i).Toggle();
