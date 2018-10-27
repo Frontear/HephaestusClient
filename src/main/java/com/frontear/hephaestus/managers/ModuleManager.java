@@ -16,6 +16,7 @@ public class ModuleManager {
         moduleList.add(new NoFOV());
 
         moduleList.add(new Panic());
+        moduleList.add(new ClickGUI());
     }
 
     public ArrayList<Module> getEnabledModules() {
