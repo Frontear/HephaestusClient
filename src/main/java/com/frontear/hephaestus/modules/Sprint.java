@@ -18,6 +18,6 @@ public class Sprint extends Module {
     }
 
     private boolean canSprint() {
-        return (!minecraft.thePlayer.isBlocking() && !minecraft.thePlayer.isOnLadder() && !minecraft.thePlayer.isCollidedHorizontally && minecraft.thePlayer.getFoodStats().getFoodLevel() > 6);
+        return (minecraft.thePlayer.moveForward > 0 && !minecraft.thePlayer.isBlocking() && !minecraft.thePlayer.isOnLadder() && !minecraft.thePlayer.isCollidedHorizontally && minecraft.thePlayer.getFoodStats().getFoodLevel() > 6);
     }
 }
