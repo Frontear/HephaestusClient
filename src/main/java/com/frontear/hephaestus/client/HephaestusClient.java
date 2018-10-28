@@ -19,10 +19,12 @@ public class HephaestusClient {
 
     public UIManager uiManager;
     public ModuleManager moduleManager;
+    public CommandManager commandManager;
 
     public HephaestusClient() {
         uiManager = new UIManager();
         moduleManager = new ModuleManager();
+        commandManager = new CommandManager();
 
         Display.setTitle(CLIENT_NAME + " " + "Client" + " " + CLIENT_VERSION);
     }
