@@ -6,6 +6,7 @@ import com.frontear.hephaestus.modules.AutoClicker;
 import com.frontear.hephaestus.modules.api.Module;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -46,7 +47,7 @@ public class HephaestusClient {
     }
 
     @SubscribeEvent
-    public void onRender(EntityViewRenderEvent event) {
+    public void onRender(RenderHandEvent event) {
         for (Module module : moduleManager.getEnabledModules()) {
             module.onRender();
         }
