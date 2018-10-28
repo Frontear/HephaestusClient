@@ -31,7 +31,6 @@ public class AutoClicker extends Module {
             	minecraft.thePlayer.swingItem();
             	switch (minecraft.objectMouseOver.typeOfHit) {
                     case ENTITY:
-                        DoCritical();
                         minecraft.playerController.attackEntity(minecraft.thePlayer, minecraft.objectMouseOver.entityHit);
                         break;
                     case BLOCK:
@@ -43,16 +42,5 @@ public class AutoClicker extends Module {
         else {
             delayTimer.resetTime();
         }
-    }
-
-    private void DoCritical() {
-        double playerX = minecraft.thePlayer.posX;
-        double playerY = minecraft.thePlayer.posY;
-        double playerZ = minecraft.thePlayer.posZ;
-
-        minecraft.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(playerX, playerY + 0.625D, playerZ, true));
-        minecraft.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(playerX, playerY, playerZ, false));
-        minecraft.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(playerX, playerY + 1.1E-5D, playerZ, false));
-        minecraft.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(playerX, playerY, playerZ, false));
     }
 }
