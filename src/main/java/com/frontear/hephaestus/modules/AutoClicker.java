@@ -2,6 +2,7 @@ package com.frontear.hephaestus.modules;
 
 import com.frontear.hephaestus.helpers.DelayTimer;
 import com.frontear.hephaestus.modules.api.Module;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import org.lwjgl.input.Keyboard;
 
 import java.util.Random;
@@ -30,6 +31,7 @@ public class AutoClicker extends Module {
             	minecraft.thePlayer.swingItem();
             	switch (minecraft.objectMouseOver.typeOfHit) {
                     case ENTITY:
+                        DoCritical();
                         minecraft.playerController.attackEntity(minecraft.thePlayer, minecraft.objectMouseOver.entityHit);
                         break;
                     case BLOCK:
@@ -41,5 +43,16 @@ public class AutoClicker extends Module {
         else {
             delayTimer.resetTime();
         }
+    }
+
+    private void DoCritical() {
+        double playerX = minecraft.thePlayer.posX;
+        double playerY = minecraft.thePlayer.posY;
+        double playerZ = minecraft.thePlayer.posZ;
+
+        minecraft.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(playerX, playerY + 0.625D, playerZ, true));
+        minecraft.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(playerX, playerY, playerZ, false));
+        minecraft.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(playerX, playerY + 1.1E-5D, playerZ, false));
+        minecraft.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(playerX, playerY, playerZ, false));
     }
 }
