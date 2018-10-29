@@ -28,4 +28,16 @@ public class ModuleManager {
 
         return enabledModules;
     }
+
+    public Module getModule(String name) {
+        Module the_module = null;
+        for (Module module : moduleList) {
+            if (module.name.equals(name)) {
+                the_module = module;
+                break;
+            }
+        }
+
+        return the_module;
+    }
 }

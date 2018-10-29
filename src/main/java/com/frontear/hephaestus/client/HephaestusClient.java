@@ -1,6 +1,5 @@
 package com.frontear.hephaestus.client;
 
-import com.frontear.hephaestus.managers.CommandManager;
 import com.frontear.hephaestus.managers.ModuleManager;
 import com.frontear.hephaestus.managers.UIManager;
 import com.frontear.hephaestus.modules.api.Module;
@@ -17,12 +16,10 @@ public class HephaestusClient {
 
     public UIManager uiManager;
     public ModuleManager moduleManager;
-    public CommandManager commandManager;
 
     public HephaestusClient() {
         uiManager = new UIManager();
         moduleManager = new ModuleManager();
-        commandManager = new CommandManager();
 
         Display.setTitle(CLIENT_NAME + " " + "Client" + " " + CLIENT_VERSION);
     }
