@@ -27,7 +27,7 @@ public class UIManager {
         multiColor = MultiColor.getRainbow();
         uiPosition.positionText(position_on_screen, Hephaestus.client.CLIENT_NAME, 2, 2, scaleFactor);
         uiPosition.GLScale(scaleFactor);
-        minecraft.fontRenderer.drawStringWithShadow(Hephaestus.client.CLIENT_NAME, uiPosition.x_position, uiPosition.y_position, new Color(multiColor.red, multiColor.blue, multiColor.green).getRGB());
+        minecraft.fontRenderer.drawStringWithShadow(Hephaestus.client.CLIENT_NAME, uiPosition.x_position, uiPosition.y_position, multiColor.getRGB());
         uiPosition.GLScale(1 / scaleFactor);
     }
 }
