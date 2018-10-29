@@ -24,6 +24,9 @@ public class HephaestusCommands {
 
     @SubscribeEvent
     public void onChat(ClientChatEvent event) {
+        if (commandIssued(event, "ping")) {
+            hephaestusResponse(new ResponseBuilder("pong!").getResponse());
+        }
     }
 
     private boolean commandIssued(ClientChatEvent event, String command) {
@@ -34,7 +37,7 @@ public class HephaestusCommands {
         return message;
     }
 
-    private void chatResponse(ITextComponent message) {
+    private void hephaestusResponse(ITextComponent message) {
         minecraft.ingameGUI.getChatGUI().printChatMessage(new TextComponentString(responsePrefix + message.getFormattedText()));
     }
 }
