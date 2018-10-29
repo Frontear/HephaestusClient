@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 @Mod(
         modid = "hephaestus",
-        version = "0.3",
+        version = "0.4",
         acceptedMinecraftVersions = "[1.12.2]"
 )
 public class Hephaestus
