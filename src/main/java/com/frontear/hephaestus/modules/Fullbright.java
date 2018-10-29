@@ -1,8 +1,6 @@
 package com.frontear.hephaestus.modules;
 
 import com.frontear.hephaestus.modules.api.Module;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import org.lwjgl.input.Keyboard;
 
 public class Fullbright extends Module {

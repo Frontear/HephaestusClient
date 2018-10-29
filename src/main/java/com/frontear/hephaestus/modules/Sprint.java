@@ -13,11 +13,11 @@ public class Sprint extends Module {
         super.onUpdate();
 
         if (canSprint()) {
-            minecraft.thePlayer.setSprinting(true);
+            minecraft.player.setSprinting(true);
         }
     }
 
     private boolean canSprint() {
-        return (minecraft.thePlayer.moveForward > 0 && !minecraft.thePlayer.isBlocking() && !minecraft.thePlayer.isOnLadder() && !minecraft.thePlayer.isCollidedHorizontally && minecraft.thePlayer.getFoodStats().getFoodLevel() > 6);
+        return (minecraft.player.moveForward > 0 && !minecraft.player.isActiveItemStackBlocking() && !minecraft.player.isOnLadder() && !minecraft.player.collidedHorizontally && minecraft.player.getFoodStats().getFoodLevel() > 6);
     }
 }

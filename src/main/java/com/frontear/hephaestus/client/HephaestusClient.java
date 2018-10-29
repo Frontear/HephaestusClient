@@ -1,13 +1,11 @@
 package com.frontear.hephaestus.client;
 
-import com.frontear.hephaestus.Hephaestus;
-import com.frontear.hephaestus.managers.*;
-import com.frontear.hephaestus.modules.AutoClicker;
+import com.frontear.hephaestus.managers.CommandManager;
+import com.frontear.hephaestus.managers.ModuleManager;
+import com.frontear.hephaestus.managers.UIManager;
 import com.frontear.hephaestus.modules.api.Module;
-import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderHandEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -31,7 +29,7 @@ public class HephaestusClient {
 
     @SubscribeEvent
     public void onGui(RenderGameOverlayEvent event) {
-        if (event.type == RenderGameOverlayEvent.ElementType.TEXT) {
+        if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
             uiManager.Draw();
             for (int i = 0; i < moduleManager.getEnabledModules().size(); i++) {
                 moduleManager.getEnabledModules().get(i).onGui(i);

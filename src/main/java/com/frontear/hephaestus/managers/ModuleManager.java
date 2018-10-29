@@ -2,7 +2,6 @@ package com.frontear.hephaestus.managers;
 
 import com.frontear.hephaestus.modules.*;
 import com.frontear.hephaestus.modules.api.Module;
-import net.minecraftforge.client.ClientCommandHandler;
 
 import java.util.ArrayList;
 

@@ -16,16 +16,16 @@ public class UIPosition {
                 y_position = (0 + offset_y) / scale;
                 break;
             case TOP_RIGHT:
-                x_position = (((minecraft.displayWidth / 2) - (minecraft.fontRendererObj.getStringWidth(text) * scale)) - offset_x) / scale;
+                x_position = (((minecraft.displayWidth / 2) - (minecraft.fontRenderer.getStringWidth(text) * scale)) - offset_x) / scale;
                 y_position = (0 + offset_y) / scale;
                 break;
             case BOTTOM_LEFT:
                 x_position = (0 + offset_x) / scale;
-                y_position = (((minecraft.displayHeight / 2) - (minecraft.fontRendererObj.FONT_HEIGHT * scale)) - offset_y) / scale;
+                y_position = (((minecraft.displayHeight / 2) - (minecraft.fontRenderer.FONT_HEIGHT * scale)) - offset_y) / scale;
                 break;
             case BOTTOM_RIGHT:
-                x_position = (((minecraft.displayWidth / 2) - (minecraft.fontRendererObj.getStringWidth(text) * scale)) - offset_x) / scale;
-                y_position = (((minecraft.displayHeight / 2) - (minecraft.fontRendererObj.FONT_HEIGHT * scale)) - offset_y) / scale;
+                x_position = (((minecraft.displayWidth / 2) - (minecraft.fontRenderer.getStringWidth(text) * scale)) - offset_x) / scale;
+                y_position = (((minecraft.displayHeight / 2) - (minecraft.fontRenderer.FONT_HEIGHT * scale)) - offset_y) / scale;
                 break;
         }
     }

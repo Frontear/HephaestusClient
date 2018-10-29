@@ -1,11 +1,8 @@
 package com.frontear.hephaestus.modules;
 
 import com.frontear.hephaestus.modules.api.Module;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.Potion;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
 
@@ -18,11 +15,11 @@ public class NoFOV extends Module {
     @SubscribeEvent
     public void onFOV(FOVUpdateEvent event) {
         if(getState()) {
-            if (event.entity.isSprinting()) {
-                event.newfov = 1.15f;
+            if (event.getEntity().isSprinting()) {
+                event.setNewfov(1.15f);
             }
-            else if (!event.entity.isSprinting()) {
-                event.newfov = 1f;
+            else if (!event.getEntity().isSprinting()) {
+                event.setNewfov(1f);
             }
         }
     }
