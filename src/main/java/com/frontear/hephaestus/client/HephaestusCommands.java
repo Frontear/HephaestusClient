@@ -2,7 +2,6 @@ package com.frontear.hephaestus.client;
 
 import com.frontear.hephaestus.Hephaestus;
 import com.frontear.hephaestus.helpers.ResponseBuilder;
-import com.frontear.hephaestus.modules.api.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
