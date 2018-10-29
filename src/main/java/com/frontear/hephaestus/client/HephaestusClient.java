@@ -14,12 +14,12 @@ public class HephaestusClient {
     public final String CLIENT_NAME = "Hephaestus";
     public final double CLIENT_VERSION = 0.3;
 
-    public UIManager uiManager;
     public ModuleManager moduleManager;
+    public UIManager uiManager;
 
     public HephaestusClient() {
-        uiManager = new UIManager();
         moduleManager = new ModuleManager();
+        uiManager = new UIManager();
 
         Display.setTitle(CLIENT_NAME + " " + "Client" + " " + CLIENT_VERSION);
     }

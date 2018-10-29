@@ -1,6 +1,7 @@
 package com.frontear.hephaestus.modules.api;
 
 import com.frontear.hephaestus.Hephaestus;
+import com.frontear.hephaestus.helpers.MultiColor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -13,6 +14,7 @@ public class Module {
     public KeyBinding module;
     private boolean state;
 
+    private MultiColor multiColor;
     private float scaleFactor = 1.2f;
     protected Minecraft minecraft = Minecraft.getMinecraft();
 
@@ -25,9 +27,10 @@ public class Module {
     }
 
     public void onGui(int offset) {
+        multiColor = MultiColor.getRainbow();
         Hephaestus.client.uiManager.uiPosition.positionText(Hephaestus.client.uiManager.position_on_screen, getModuleName(), 2, 8, 1.2f);
         Hephaestus.client.uiManager.uiPosition.GLScale(scaleFactor);
-        minecraft.fontRenderer.drawStringWithShadow(getModuleName(), Hephaestus.client.uiManager.uiPosition.x_position, (Hephaestus.client.uiManager.uiPosition.y_position - 10) - (offset * 10), new Color(255, 255, 255).getRGB());
+        minecraft.fontRenderer.drawStringWithShadow(getModuleName(), Hephaestus.client.uiManager.uiPosition.x_position, (Hephaestus.client.uiManager.uiPosition.y_position - 10) - (offset * 10), new Color(multiColor.red, multiColor.blue, multiColor.green).getRGB());
         Hephaestus.client.uiManager.uiPosition.GLScale( 1 / scaleFactor);
     }
 

@@ -15,6 +15,8 @@ public class ModuleManager {
         moduleList.add(new NoFOV());
 
         moduleList.add(new Panic());
+        moduleList.add(new Rainbow());
+
         moduleList.add(new ClickGUI());
     }
 
@@ -32,7 +34,7 @@ public class ModuleManager {
     public Module getModule(String name) {
         Module the_module = null;
         for (Module module : moduleList) {
-            if (module.name.equals(name)) {
+            if (module.name.equalsIgnoreCase(name)) {
                 the_module = module;
                 break;
             }
