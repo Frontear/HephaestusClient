@@ -33,7 +33,7 @@ public class QuickEat extends Module {
 
     private int findFoodFromHotbar() {
         int foodSlot = -1;
-        for (int i = minecraft.player.inventory.currentItem; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             try {
                 ItemFood food = (ItemFood)minecraft.player.inventory.mainInventory.get(i).getItem();
                 foodSlot = i;
