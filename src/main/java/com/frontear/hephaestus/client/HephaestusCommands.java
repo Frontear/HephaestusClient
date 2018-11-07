@@ -31,7 +31,9 @@ public class HephaestusCommands {
             }
 
             if (!commandIssued && commandManager.ContainsPrefix(event.getMessage())) {
-                Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString(commandManager.responsePrefix + new TextComponentString("Unknown command. Try " + commandManager.commandPrefix + "help for a list of commands.").setStyle(new Style().setColor(TextFormatting.GRAY))));
+                TextComponentString t = new TextComponentString("Unknown command. Type " + commandManager.commandPrefix + "help for a list of commands");
+                t.setStyle(new Style().setColor(TextFormatting.GRAY));
+                Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString(commandManager.responsePrefix + t.getFormattedText()));
                 commandIssued = true;
             }
         }
