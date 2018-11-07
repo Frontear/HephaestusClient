@@ -13,6 +13,7 @@ public class ModuleManager {
         moduleList.add(new Fullbright());
         moduleList.add(new AutoClicker());
         moduleList.add(new NoFOV());
+        moduleList.add(new Trail());
 
         moduleList.add(new Panic());
         moduleList.add(new Rainbow());

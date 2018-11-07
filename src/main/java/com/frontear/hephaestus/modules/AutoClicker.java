@@ -13,7 +13,7 @@ public class AutoClicker extends Module {
     private int min_cps = 9, max_cps = 13;
 
     public AutoClicker() {
-        super("AutoClicker", Keyboard.KEY_F);
+        super("AutoClicker", Keyboard.KEY_R);
     }
 
     @Override

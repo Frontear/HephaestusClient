@@ -7,13 +7,13 @@ public class Fullbright extends Module {
     private float previousGamma;
     public Fullbright() {
         super("Fullbright", Keyboard.KEY_B);
-        previousGamma = minecraft.gameSettings.gammaSetting;
     }
 
     @Override
     public void onToggle(boolean state) {
         super.onToggle(state);
 
+        previousGamma = minecraft.gameSettings.gammaSetting;
         minecraft.gameSettings.gammaSetting = (state ? 100f : previousGamma);
     }
 }
