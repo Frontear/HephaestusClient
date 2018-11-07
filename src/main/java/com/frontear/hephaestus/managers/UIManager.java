@@ -15,7 +15,7 @@ public class UIManager {
 
     private MultiColor multiColor;
 
-    public UIPosition.POSITION_ON_SCREEN position_on_screen = UIPosition.POSITION_ON_SCREEN.BOTTOM_RIGHT;
+    public UIPosition.POSITION_ON_SCREEN position_on_screen = UIPosition.POSITION_ON_SCREEN.TOP_LEFT;
     public float scaleFactor = 1.5f;
 
     public UIManager() {
