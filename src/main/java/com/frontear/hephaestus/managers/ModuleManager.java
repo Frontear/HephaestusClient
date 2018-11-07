@@ -14,6 +14,7 @@ public class ModuleManager {
         moduleList.add(new AutoClicker());
         moduleList.add(new NoFOV());
         moduleList.add(new Trail());
+        moduleList.add(new QuickEat());
 
         moduleList.add(new Panic());
         moduleList.add(new Rainbow());
