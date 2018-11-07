@@ -12,7 +12,7 @@ import org.lwjgl.opengl.Display;
 
 public class HephaestusClient {
     public final String CLIENT_NAME = "Hephaestus";
-    public final double CLIENT_VERSION = 0.4;
+    public final double CLIENT_VERSION = 0.6;
 
     public ModuleManager moduleManager;
     public UIManager uiManager;
