@@ -30,7 +30,7 @@ public class Module {
         multiColor = MultiColor.getRainbow();
         Hephaestus.client.uiManager.uiPosition.positionText(Hephaestus.client.uiManager.position_on_screen, getModuleName(), 2, 8, 1.2f);
         Hephaestus.client.uiManager.uiPosition.GLScale(scaleFactor);
-        minecraft.fontRenderer.drawStringWithShadow(getModuleName(), Hephaestus.client.uiManager.uiPosition.x_position, (Hephaestus.client.uiManager.uiPosition.y_position - 10) - (offset * 10), multiColor.getRGB());
+        minecraft.fontRenderer.drawStringWithShadow(getModuleName(), Hephaestus.client.uiManager.uiPosition.x_position, (Hephaestus.client.uiManager.uiPosition.y_position + 10) + (offset * 10), multiColor.getRGB());
         Hephaestus.client.uiManager.uiPosition.GLScale( 1 / scaleFactor);
     }
 
