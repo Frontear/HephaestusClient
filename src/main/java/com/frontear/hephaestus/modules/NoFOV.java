@@ -18,6 +18,9 @@ public class NoFOV extends Module {
             if (event.getEntity().isSprinting()) {
                 event.setNewfov(1.15f);
             }
+            else {
+                event.setNewfov(1f);
+            }
         }
     }
 }
